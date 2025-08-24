@@ -19,19 +19,15 @@ function sortList(ul) {
   sortedBySalary.forEach((item) => ul.appendChild(item));
 }
 
-function getEmployees(ul) {
-  const employees = [];
-
-  for (const item of ul.children) {
-    employees.push({
-      name: item.textContent.trim(),
+function getEmployees(items) {
+  return Array.from(items).map((item) => {
+    return {
+      name: item.textContent,
       position: item.dataset.position,
       salary: parseSalary(item.dataset.salary),
-      age: Number(item.dataset.age),
-    });
-  }
-
-  return employees;
+      age: item.dataset.age,
+    };
+  });
 }
 
 sortList(list);
